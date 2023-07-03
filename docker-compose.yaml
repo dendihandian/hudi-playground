@@ -1,6 +1,13 @@
 version: '3.8'
 
+volumes:
+  postgres-volume:
+
 services:
+
+######################################################
+# SPARK
+######################################################
 
   spark-hudi-master:
     build:
@@ -28,3 +35,35 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
+
+######################################################
+# POSTGRES
+######################################################
+
+  postgres:
+    build: 
+      context: ./docker/postgres
+      dockerfile: ./Dockerfile
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: spark_hudi
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+
+######################################################
+# ADMINER (optional)
+######################################################
+
+  adminer:
+    build:
+      context: './docker/adminer'
+      dockerfile: ./Dockerfile
+    ports:
+      - 9001:9000
+    environment:
+      - ADMINER_DEFAULT_DB_DRIVER=psql
+      - ADMINER_DEFAULT_DB_HOST=postgres
+      - ADMINER_DEFAULT_DB_NAME=spark_hudi
+    depends_on:
+      - postgres

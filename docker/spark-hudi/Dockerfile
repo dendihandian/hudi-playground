@@ -1,4 +1,4 @@
-FROM bitnami/spark:3.3.2
+FROM bitnami/spark:3.3
 
 # copy source
 COPY src /opt/bitnami/spark/pyspark/src
