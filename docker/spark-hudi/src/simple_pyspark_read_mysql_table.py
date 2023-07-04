@@ -9,14 +9,14 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Configure MySQL connection
-jdbc_url = "jdbc:mysql://mysql:3306/spark_hudi"
+jdbc_url = "jdbc:mysql://mysql:3306/test_db"
 table_name = "test_table"
 connection_properties = {
     "user": "root",
     "password": "example"
 }
 
-# Read data from PostgreSQL table
+# Read data from MySQL table
 df = spark.read \
     .format("jdbc") \
     .option("url", jdbc_url) \

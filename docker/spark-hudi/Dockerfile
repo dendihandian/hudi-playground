@@ -18,7 +18,7 @@ RUN curl https://repo1.maven.org/maven2/postgresql/postgresql/9.1-901.jdbc3/post
 RUN curl https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3.3-bundle_2.12/0.13.1/hudi-spark3.3-bundle_2.12-0.13.1.jar --output /opt/bitnami/spark/jars/hudi-spark-bundle-0.13.1.jar
 
 # install required python packages
-RUN pip install pyspark
+RUN pip install pyspark pymysql psycopg2-binary Faker
 
 # change working directory for easier PySpark script execution
 WORKDIR /opt/bitnami/spark/pyspark
