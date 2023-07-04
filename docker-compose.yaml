@@ -52,6 +52,19 @@ services:
       - postgres-volume:/var/lib/postgresql/data
 
 ######################################################
+# MYSQL
+######################################################
+
+  mysql:
+    build: 
+      context: ./docker/mysql
+      dockerfile: ./Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+
+######################################################
 # ADMINER (optional)
 ######################################################
 
@@ -67,3 +80,4 @@ services:
       - ADMINER_DEFAULT_DB_NAME=spark_hudi
     depends_on:
       - postgres
+      - mysql
