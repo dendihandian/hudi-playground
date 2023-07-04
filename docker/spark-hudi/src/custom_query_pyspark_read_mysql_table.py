@@ -5,7 +5,7 @@ docker-compose exec spark-hudi-master python src/custom_query_pyspark_read_mysql
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder \
-    .appName("MySQL Query") \
+    .appName("custom_query_pyspark_read_mysql_table") \
     .getOrCreate()
 
 # Configure MySQL connection

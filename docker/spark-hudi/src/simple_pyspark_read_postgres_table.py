@@ -5,7 +5,7 @@ docker-compose exec spark-hudi-master python src/simple_pyspark_read_postgres_ta
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder \
-    .appName("PostgreSQL Query") \
+    .appName("simple_pyspark_read_postgres_table") \
     .getOrCreate()
 
 # Configure PostgreSQL connection

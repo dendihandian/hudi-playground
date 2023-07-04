@@ -23,6 +23,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION=${AWS_REGION}
       - S3_BUCKET=${S3_BUCKET}
+      - GLUE_DATABASE=${GLUE_DATABASE}
+      - GLUE_TABLE=${GLUE_TABLE}
     volumes:
       - ./docker/spark-hudi/src:/opt/bitnami/spark/pyspark/src
 
